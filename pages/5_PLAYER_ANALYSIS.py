@@ -908,7 +908,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             unsafe_allow_html=True
         )
         for v in data_indiv2[data_indiv2.columns[i]]:
-            if v == data_indiv2[data_indiv2.columns[i]].max() :
+            if (((v == data_indiv2[data_indiv2.columns[i]].max()) and (data_indiv2.columns[i]!="Turn.")) or ((v == data_indiv2[data_indiv2.columns[i]].min()) and (data_indiv2.columns[i]=="Turn."))) and (data_indiv2[data_indiv2.columns[i]].max() != data_indiv2[data_indiv2.columns[i]].min()) :
                 col.markdown(
                     f'''
                     <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -916,6 +916,14 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
                     </p>
                     ''',
                     unsafe_allow_html=True)
+            elif ((v == data_indiv2[data_indiv2.columns[i]].min()) or ((v == data_indiv2[data_indiv2.columns[i]].max()) and (data_indiv2.columns[i]=="Turn."))) and (data_indiv2[data_indiv2.columns[i]].max() != data_indiv2[data_indiv2.columns[i]].min()) :
+                col.markdown(
+                    f'''
+                    <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                        <b>{v}</b>
+                    </p>
+                    ''',
+                    unsafe_allow_html=True)             
             else :
                 col.markdown(
                     f'''
@@ -945,11 +953,15 @@ filtered_stats = [
     'PTS PER 3PTS', 'NB SHOOTS', 'PTS PER FT', 'NB FT'
 ]
 result_df1 = result_df[result_df['STATS'].isin(filtered_stats)]
+result_df1['STATS'] = pd.Categorical(result_df1['STATS'], categories=filtered_stats, ordered=True)
+result_df1 = result_df1.sort_values('STATS')
 
 filtered_stats = [
     'Time ON', 'Reb.Tot.', 'Reb.Off.', 'Reb.Def.', 'Steals', 'Turn.', 'Assists', 'Blocks', 'NB GAME'
 ]
 result_df2 = result_df[result_df['STATS'].isin(filtered_stats)]
+result_df2['STATS'] = pd.Categorical(result_df2['STATS'], categories=filtered_stats, ordered=True)
+result_df2 = result_df2.sort_values('STATS')
 
 STATS,Mean_WIN,Mean_LOSE,Delta,Delta_p,_,STATS2,Mean_WIN2,Mean_LOSE2,Delta2,Delta_p2 = st.columns([0.126,0.081,0.081,0.081,0.081,0.1,0.126,0.081,0.081,0.081,0.081])
 
@@ -1142,16 +1154,27 @@ with Delta2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_df2['Delta'] :
-        if v > 0 :
-            vf = f"+{v}"
-            coloration = "green"
-        elif v<0 :
-            vf = v
-            coloration = "red"
+    for i,v in enumerate(result_df2['Delta']) :
+        if i != 5 :
+            if v > 0 :
+                vf = f"+{v}"
+                coloration = "green"
+            elif v<0 :
+                vf = v
+                coloration = "red"
+            else :
+                vf = v
+                coloration = "white"
         else :
-            vf = v
-            coloration = "white"
+            if v > 0 :
+                vf = f"+{round(v,1)}"
+                coloration = "red"
+            elif v<0 :
+                vf = round(v,1)
+                coloration = "green"
+            else :
+                vf = round(v,1)
+                coloration = "white"   
 
         st.markdown(
             f'''
@@ -1171,21 +1194,32 @@ with Delta_p2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_df2['Delta %'] :
-        if v > 0 :
-            vf = f"+{v} % " 
-            coloration = "green"
-        elif v<0 :
-            vf = f"{v} % " 
-            coloration = "red"
+    for i,v in enumerate(result_df2['Delta %']) :
+        if i != 5 :
+            if v > 0 :
+                vf = f"+{v}"
+                coloration = "green"
+            elif v<0 :
+                vf = v
+                coloration = "red"
+            else :
+                vf = v
+                coloration = "white"
         else :
-            vf = f"{v} % " 
-            coloration = "white"
+            if v > 0 :
+                vf = f"+{round(v,1)}"
+                coloration = "red"
+            elif v<0 :
+                vf = round(v,1)
+                coloration = "green"
+            else :
+                vf = round(v,1)
+                coloration = "white"  
 
         st.markdown(
             f'''
             <p style="font-size:{int(20)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {vf} </b>
+                <b> {vf} %</b>
             </p>
             ''',
             unsafe_allow_html=True

@@ -371,6 +371,14 @@ try :
                         </p>
                         ''',
                         unsafe_allow_html=True)
+                elif v == data_game[data_game.columns[i]].min() :
+                    col.markdown(
+                        f'''
+                        <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                            <b>{v}</b>
+                        </p>
+                        ''',
+                        unsafe_allow_html=True)
                 else :
                     col.markdown(
                         f'''

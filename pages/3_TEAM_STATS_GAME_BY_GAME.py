@@ -32,15 +32,6 @@ st.sidebar.header("SETTINGS")
 
 PER_TYPE = st.sidebar.selectbox("SELECTED PER CALCUL", options=["GUITE PER","CLASSIC PER"], index=0)
 
-selected_range = st.sidebar.slider(
-    "Select a ROUND range:",
-    min_value=1,
-    max_value=data["ROUND"].max(),
-    value=(1, data["ROUND"].max()),
-    step=1
-)
-
-data = data[(data["ROUND"]>= selected_range[0])&(data["ROUND"]<= selected_range[1])]
 
 coefficients = dict(zip(per["STATS"].to_list(), per[PER_TYPE].to_list()))
 data["PER"] = (sum(data[col] * coeff for col, coeff in coefficients.items())).round(1)
@@ -159,7 +150,13 @@ aggregated_df.rename(columns={'Reb.Off.': 'Reb.O.'}, inplace=True)
 aggregated_df.rename(columns={'Reb.Def.': 'Reb.D.'}, inplace=True)
 aggregated_df.rename(columns={'Reb.Tot.': 'Reb.'}, inplace=True)
 
-st.dataframe(aggregated_df, height=min(35 + 35*len(aggregated_df),900),width=2000,hide_index=True)  # Augmenter la hauteur du tableau
+#st.dataframe(aggregated_df, height=min(35 + 35*len(aggregated_df),900),width=2000,hide_index=True)  # Augmenter la hauteur du tableau
+
+
+
+aggregated_df = aggregated_df[["Date","Adversaire","WIN","MS","ADV",'PER','PTS','1M', '1T',
+       'PP2FT', '2M', '2T', 'PPS2', '3M', '3T', 'PPS3','NB T',
+       'PPS','Reb.O.', 'Reb.D.', 'Reb.','Steals', 'Turn.', 'Assists', 'Blocks']]
 
 cols = st.columns([1.8]*2 + [1] * (len(aggregated_df.columns)-2))  # Créer des colonnes dynamiques
 
@@ -219,6 +216,14 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
                 col.markdown(
                     f'''
                     <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                        <b>{v}</b>
+                    </p>
+                    ''',
+                    unsafe_allow_html=True)
+            elif v == aggregated_df[aggregated_df.columns[i]].min() :
+                col.markdown(
+                    f'''
+                    <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
