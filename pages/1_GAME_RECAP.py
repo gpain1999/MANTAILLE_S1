@@ -363,7 +363,7 @@ try :
                 unsafe_allow_html=True
             )
             for v in data_game[data_game.columns[i]]:
-                if v == data_game[data_game.columns[i]].max() :
+                if (((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]!="Turn.")) or ((v == data_game[data_game.columns[i]].min()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
                     col.markdown(
                         f'''
                         <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -371,7 +371,7 @@ try :
                         </p>
                         ''',
                         unsafe_allow_html=True)
-                elif v == data_game[data_game.columns[i]].min() :
+                elif ((v == data_game[data_game.columns[i]].min()) or ((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
                     col.markdown(
                         f'''
                         <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
