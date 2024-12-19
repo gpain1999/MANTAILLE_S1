@@ -89,6 +89,8 @@ images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to 
 
 st.set_page_config(page_title="GAME RECAP", layout="wide")
 
+from streamlit_js_eval import streamlit_js_eval
+page_width = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,)
 
 
 ############################DATA ###########################
@@ -245,7 +247,7 @@ with stat1 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> NB GAME</b>
         </p>
         ''',
@@ -254,7 +256,7 @@ with stat1 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Matchs joués"].to_list()[0]}</b>
         </p>
         ''',
@@ -267,7 +269,7 @@ with stat2 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> TIME</b>
         </p>
         ''',
@@ -276,7 +278,7 @@ with stat2 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["TIME"].to_list()[0]}</b>
         </p>
         ''',
@@ -286,7 +288,7 @@ with stat3 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>PER</b>
         </p>
         ''',
@@ -295,7 +297,7 @@ with stat3 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["PER"].to_list()[0]}</b>
         </p>
         ''',
@@ -306,7 +308,7 @@ with stat4 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>PTS</b>
         </p>
         ''',
@@ -315,7 +317,7 @@ with stat4 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["PTS"].to_list()[0]}</b>
         </p>
         ''',
@@ -326,7 +328,7 @@ with stat5 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>AST</b>
         </p>
         ''',
@@ -335,7 +337,7 @@ with stat5 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Assists"].to_list()[0]}</b>
         </p>
         ''',
@@ -345,7 +347,7 @@ with stat6 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 9px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>REB</b>
         </p>
         ''',
@@ -354,7 +356,7 @@ with stat6 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 12px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Reb.Tot."].to_list()[0]}</b>
         </p>
         ''',
@@ -369,7 +371,7 @@ with stat1 :
     
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> DEF. REB. </b>
         </p>
         ''',
@@ -378,7 +380,7 @@ with stat1 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Reb.Def."].to_list()[0]}</b>
         </p>
         ''',
@@ -388,7 +390,7 @@ with stat1 :
 with stat2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> OFF. REB. </b>
         </p>
         ''',
@@ -397,7 +399,7 @@ with stat2 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Reb.Off."].to_list()[0]}</b>
         </p>
         ''',
@@ -408,7 +410,7 @@ with stat2 :
 with stat3 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> I_PER </b>
         </p>
         ''',
@@ -417,7 +419,7 @@ with stat3 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["I_PER"].to_list()[0]}</b>
         </p>
         ''',
@@ -427,7 +429,7 @@ with stat3 :
 with stat4 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> %WIN </b>
         </p>
         ''',
@@ -436,7 +438,7 @@ with stat4 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {round(100 * (data_indiv["WIN"] == "YES").mean())} %</b>
         </p>
         ''',
@@ -448,7 +450,7 @@ with stat4 :
 with stat5 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> BLOCKS </b>
         </p>
         ''',
@@ -457,7 +459,7 @@ with stat5 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Blocks"].to_list()[0]}</b>
         </p>
         ''',
@@ -467,7 +469,7 @@ with stat5 :
 with stat6 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> STEALS </b>
         </p>
         ''',
@@ -476,7 +478,7 @@ with stat6 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["Steals"].to_list()[0]}</b>
         </p>
         ''',
@@ -488,7 +490,7 @@ with stat7 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> FT MADE </b>
         </p>
         ''',
@@ -497,7 +499,7 @@ with stat7 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["1M"].to_list()[0]}</b>
         </p>
         ''',
@@ -512,7 +514,7 @@ with stat8 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> FT ATT. </b>
         </p>
         ''',
@@ -521,7 +523,7 @@ with stat8 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["1T"].to_list()[0]}</b>
         </p>
         ''',
@@ -534,7 +536,7 @@ with stat9 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> 2PTS MADE </b>
         </p>
         ''',
@@ -543,7 +545,7 @@ with stat9 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["2M"].to_list()[0]}</b>
         </p>
         ''',
@@ -556,7 +558,7 @@ with stat10 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> 2PTS ATT. </b>
         </p>
         ''',
@@ -565,7 +567,7 @@ with stat10 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["2T"].to_list()[0]}</b>
         </p>
         ''',
@@ -578,7 +580,7 @@ with stat11 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> 3PTS MADE </b>
         </p>
         ''',
@@ -587,7 +589,7 @@ with stat11 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["3M"].to_list()[0]}</b>
         </p>
         ''',
@@ -602,7 +604,7 @@ with stat12 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b> 3PTS ATT. </b>
         </p>
         ''',
@@ -611,7 +613,7 @@ with stat12 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(30)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> {avg_data["3T"].to_list()[0]}</b>
         </p>
         ''',
@@ -620,7 +622,7 @@ with stat12 :
 
 st.markdown(
     f'''
-    <p style="font-size:{int(25)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+    <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
         <b></b>
     </p>
     ''',
@@ -632,7 +634,7 @@ col1, col2, col3 = st.columns([0.2,0.4,0.4])
 with col1:
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{avg_data["PPS"].to_list()[0]:.2f} PTS PER SHOOT</b>
         </p>
         ''',
@@ -643,11 +645,11 @@ with col1:
 
 
     
-        fig2 = plot_semi_circular_chart(data_indiv["1PTS M"].sum()/data_indiv["1PTS T"].sum() if data_indiv["1PTS T"].sum() != 0 else 0,"FT",size=int(110),font_size=int(17),m=False)
+        fig2 = plot_semi_circular_chart(data_indiv["1PTS M"].sum()/data_indiv["1PTS T"].sum() if data_indiv["1PTS T"].sum() != 0 else 0,"FT",size=int(page_width*0.055),font_size=int(page_width*0.0085),m=False)
         st.plotly_chart(fig2)
-        fig2 = plot_semi_circular_chart(data_indiv["2PTS M"].sum()/data_indiv["2PTS T"].sum() if data_indiv["2PTS T"].sum() != 0 else 0,"2P",size=int(110),font_size=int(17),m=False)
+        fig2 = plot_semi_circular_chart(data_indiv["2PTS M"].sum()/data_indiv["2PTS T"].sum() if data_indiv["2PTS T"].sum() != 0 else 0,"2P",size=int(page_width*0.055),font_size=int(page_width*0.0085),m=False)
         st.plotly_chart(fig2)
-        fig2 = plot_semi_circular_chart(data_indiv["3PTS M"].sum()/data_indiv["3PTS T"].sum() if data_indiv["3PTS T"].sum() != 0 else 0,"3P",size=int(110),font_size=int(17),m=False)
+        fig2 = plot_semi_circular_chart(data_indiv["3PTS M"].sum()/data_indiv["3PTS T"].sum() if data_indiv["3PTS T"].sum() != 0 else 0,"3P",size=int(page_width*0.055),font_size=int(page_width*0.0085),m=False)
         st.plotly_chart(fig2)
 
 min_time_on = data_indiv["Time ON"].min()*0.9
@@ -774,7 +776,7 @@ with col3:
 
 st.markdown(
     f'''
-    <p style="font-size:{int(25)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+    <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
         <b></b>
     </p>
     ''',
@@ -866,7 +868,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
     
         col.markdown(
             f'''
-            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+            <p style="font-size:{int(page_width*0.009)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                 <b>{data_indiv2.columns[i]}</b>
             </p>
             ''',
@@ -874,7 +876,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         )
         col.markdown(
             f'''
-            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+            <p style="font-size:{int(page_width*0.014)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
                 <b></b>
             </p>
             ''',
@@ -888,7 +890,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
                 col_a = "red"
             col.markdown(
                 f'''
-                <p style="font-size:{int(15)}px; text-align: center; background-color: {col_a};color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                <p style="font-size:{int(page_width*0.009)}px; text-align: center; background-color: {col_a};color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                     <b>{v}</b>
                 </p>
                 ''',
@@ -898,7 +900,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
     else:
         col.markdown(
             f'''
-            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+            <p style="font-size:{int(page_width*0.009)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                 <b>{data_indiv2.columns[i]}</b>
             </p>
             ''',
@@ -906,7 +908,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         )
         col.markdown(
             f'''
-            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+            <p style="font-size:{int(page_width*0.014)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
                 <b></b>
             </p>
             ''',
@@ -916,7 +918,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             if (((v == data_indiv2[data_indiv2.columns[i]].max()) and (data_indiv2.columns[i]!="Turn.")) or ((v == data_indiv2[data_indiv2.columns[i]].min()) and (data_indiv2.columns[i]=="Turn."))) and (data_indiv2[data_indiv2.columns[i]].max() != data_indiv2[data_indiv2.columns[i]].min()) :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                    <p style="font-size:{int(page_width*0.009)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -924,7 +926,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             elif ((v == data_indiv2[data_indiv2.columns[i]].min()) or ((v == data_indiv2[data_indiv2.columns[i]].max()) and (data_indiv2.columns[i]=="Turn."))) and (data_indiv2[data_indiv2.columns[i]].max() != data_indiv2[data_indiv2.columns[i]].min()) :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                    <p style="font-size:{int(page_width*0.009)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -932,7 +934,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             else :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
+                    <p style="font-size:{int(page_width*0.009)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -942,7 +944,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
 
 st.markdown(
     f'''
-    <p style="font-size:{int(25)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+    <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
         <b></b>
     </p>
     ''',
@@ -973,7 +975,7 @@ STATS,Mean_WIN,Mean_LOSE,Delta,Delta_p,_,STATS2,Mean_WIN2,Mean_LOSE2,Delta2,Delt
 with STATS :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b> STATS </b>
         </p>
         ''',
@@ -983,7 +985,7 @@ with STATS :
 
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
                 <b> {v} </b>
             </p>
             ''',
@@ -996,7 +998,7 @@ with Mean_WIN :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: green ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: green ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> AVG WIN </b>
         </p>
         ''',
@@ -1005,7 +1007,7 @@ with Mean_WIN :
     for v in result_df1['Mean WIN'] :
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {v} </b>
             </p>
             ''',
@@ -1015,7 +1017,7 @@ with Mean_LOSE :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: red ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: red ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> AVG LOSE </b>
         </p>
         ''',
@@ -1024,7 +1026,7 @@ with Mean_LOSE :
     for v in result_df1['Mean LOSE'] :
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {v} </b>
             </p>
             ''',
@@ -1034,7 +1036,7 @@ with Mean_LOSE :
 with Delta :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b> DELTA </b>
         </p>
         ''',
@@ -1053,7 +1055,7 @@ with Delta :
 
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {vf} </b>
             </p>
             ''',
@@ -1063,7 +1065,7 @@ with Delta :
 with Delta_p :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b> DELTA %</b>
         </p>
         ''',
@@ -1082,7 +1084,7 @@ with Delta_p :
 
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {vf} </b>
             </p>
             ''',
@@ -1092,7 +1094,7 @@ with Delta_p :
 with STATS2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b> STATS </b>
         </p>
         ''',
@@ -1102,7 +1104,7 @@ with STATS2 :
 
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c1} ;color: {local_c2}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c2};">
                 <b> {v} </b>
             </p>
             ''',
@@ -1115,7 +1117,7 @@ with Mean_WIN2:
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: green ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: green ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> AVG WIN </b>
         </p>
         ''',
@@ -1124,7 +1126,7 @@ with Mean_WIN2:
     for v in result_df2['Mean WIN'] :
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {v} </b>
             </p>
             ''',
@@ -1134,7 +1136,7 @@ with Mean_LOSE2 :
 
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: red ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: red ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
             <b> AVG LOSE </b>
         </p>
         ''',
@@ -1143,7 +1145,7 @@ with Mean_LOSE2 :
     for v in result_df2['Mean LOSE'] :
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {v} </b>
             </p>
             ''',
@@ -1153,7 +1155,7 @@ with Mean_LOSE2 :
 with Delta2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b> DELTA </b>
         </p>
         ''',
@@ -1183,7 +1185,7 @@ with Delta2 :
 
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {vf} </b>
             </p>
             ''',
@@ -1193,7 +1195,7 @@ with Delta2 :
 with Delta_p2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(20)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {local_c2} ;color: {local_c1}; padding: 2px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b> DELTA %</b>
         </p>
         ''',
@@ -1223,7 +1225,7 @@ with Delta_p2 :
 
         st.markdown(
             f'''
-            <p style="font-size:{int(20)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: {coloration} ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                 <b> {vf} %</b>
             </p>
             ''',

@@ -20,6 +20,10 @@ images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to 
 ############################DATA ###########################
 st.set_page_config(page_title="TEAM STATS GAME BY GAME", layout="wide")
 
+from streamlit_js_eval import streamlit_js_eval
+page_width = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,)
+
+
 data = pd.read_csv(os.path.join(data_dir, f'all_boxescores.csv'))
 game = pd.read_csv(os.path.join(data_dir, f'SCORE_GAME.csv'),sep=";")
 per = pd.read_csv(os.path.join(data_dir, f'PER.csv'),sep=";")
@@ -113,7 +117,7 @@ with col1 :
 with col2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(60)}px; text-align: left; padding: 10pxs;">
+        <p style="font-size:{int(page_width*0.03)}px; text-align: left; padding: 10pxs;">
             <b>TEAM STATS GAME BY GAME</b>
         </p>
         ''',
@@ -143,7 +147,7 @@ with col3 :
 
 st.markdown(
     f'''
-    <p style="font-size:{int(25)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+    <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
         <b></b>
     </p>
     ''',
@@ -170,7 +174,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
     
         col.markdown(
             f'''
-            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+            <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                 <b>{aggregated_df.columns[i]}</b>
             </p>
             ''',
@@ -178,7 +182,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         )
         col.markdown(
             f'''
-            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+            <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
                 <b></b>
             </p>
             ''',
@@ -192,7 +196,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
                 col_a = "red"
             col.markdown(
                 f'''
-                <p style="font-size:{int(15)}px; text-align: center; background-color: {col_a};color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: {col_a};color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                     <b>{v}</b>
                 </p>
                 ''',
@@ -202,7 +206,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
     else:
         col.markdown(
             f'''
-            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+            <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                 <b>{aggregated_df.columns[i]}</b>
             </p>
             ''',
@@ -210,7 +214,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         )
         col.markdown(
             f'''
-            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+            <p style="font-size:{int(page_width*0.015)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
                 <b></b>
             </p>
             ''',
@@ -220,7 +224,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             if v == aggregated_df[aggregated_df.columns[i]].max() :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                    <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -228,7 +232,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             elif v == aggregated_df[aggregated_df.columns[i]].min() :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                    <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -236,7 +240,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             else :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
+                    <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
                         <b>{v}</b>
                     </p>
                     ''',

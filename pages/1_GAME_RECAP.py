@@ -24,7 +24,8 @@ images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to 
 st.set_page_config(page_title="GAME RECAP", layout="wide")
 
 
-
+from streamlit_js_eval import streamlit_js_eval
+page_width = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,)
 
 
 ############################DATA ###########################
@@ -161,7 +162,7 @@ with com :
 with col_score1 :
     st.markdown(
         f'''
-        <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
             <b></b>
         </p>
         ''',
@@ -169,7 +170,7 @@ with col_score1 :
     )    
     st.markdown(
         f'''
-        <p style="font-size:{int(40)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.019)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{team_local} : {LOCAL_SCORE}</b>
         </p>
         ''',
@@ -178,7 +179,7 @@ with col_score1 :
 with col_score2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+        <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
             <b></b>
         </p>
         ''',
@@ -186,7 +187,7 @@ with col_score2 :
     )
     st.markdown(
         f'''
-        <p style="font-size:{int(40)}px; text-align: center; background-color: {local_c2};color: {local_c1}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c1};">
+        <p style="font-size:{int(page_width*0.019)}px; text-align: center; background-color: {local_c2};color: {local_c1}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c1};">
             <b>{team_road} : {ROAD_SCORE}</b>
         </p>
         ''',
@@ -204,7 +205,7 @@ _,col_PPS,P1,P2,P3,col_reb,col_BC,col_st_as,_ = st.columns([0.045,0.13,0.13,0.13
 with col_PPS :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{PPS} PPS</b>
         </p>
         ''',
@@ -212,7 +213,7 @@ with col_PPS :
     )
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{round(data_game["PER"].sum(),1)} PER</b>
         </p>
         ''',
@@ -221,7 +222,7 @@ with col_PPS :
 with col_BC :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["Blocks"].sum()} BLOCKS</b>
         </p>
         ''',
@@ -229,7 +230,7 @@ with col_BC :
     )
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["Turn."].sum()} TURN.</b>
         </p>
         ''',
@@ -238,7 +239,7 @@ with col_BC :
 with P1 :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{round(100*data_game["1PTS M"].sum()/data_game["1PTS T"].sum())}% LF</b>
         </p>
         ''',
@@ -246,7 +247,7 @@ with P1 :
     )
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["1PTS M"].sum()}/{data_game["1PTS T"].sum()}</b>
         </p>
         ''',
@@ -255,7 +256,7 @@ with P1 :
 with P2 :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{round(100*data_game["2PTS M"].sum()/data_game["2PTS T"].sum())}% 2PTS</b>
         </p>
         ''',
@@ -263,7 +264,7 @@ with P2 :
     )
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["2PTS M"].sum()}/{data_game["2PTS T"].sum()}</b>
         </p>
         ''',
@@ -272,7 +273,7 @@ with P2 :
 with P3 :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{round(100*data_game["3PTS M"].sum()/data_game["3PTS T"].sum())}% 3PTS</b>
         </p>
         ''',
@@ -280,7 +281,7 @@ with P3 :
     )
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["3PTS M"].sum()}/{data_game["3PTS T"].sum()}</b>
         </p>
         ''',
@@ -289,7 +290,7 @@ with P3 :
 with col_reb :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["Reb.Off."].sum()} RO | {data_game["Reb.Def."].sum()} RD </b>
         </p>
         ''',
@@ -297,7 +298,7 @@ with col_reb :
     ) 
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["Reb.Tot."].sum()} REB  </b>
         </p>
         ''',
@@ -306,7 +307,7 @@ with col_reb :
 with col_st_as :
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["Assists"].sum()} ASSISTS</b>
         </p>
         ''',
@@ -314,7 +315,7 @@ with col_st_as :
     ) 
     st.markdown(
         f'''
-        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+        <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
             <b>{data_game["Steals"].sum()} STEALS</b>
         </p>
         ''',
@@ -330,7 +331,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
 
         col.markdown(
             f'''
-            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+            <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                 <b>{data_game.columns[i]}</b>
             </p>
             ''',
@@ -338,7 +339,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         )
         col.markdown(
             f'''
-            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
                 <b></b>
             </p>
             ''',
@@ -348,7 +349,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         for v in data_game[data_game.columns[i]]:
             col.markdown(
                 f'''
-                <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #B91A1E;color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                     <b>{v}</b>
                 </p>
                 ''',
@@ -358,7 +359,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
     else :
         col.markdown(
             f'''
-            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+            <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
                 <b>{data_game.columns[i]}</b>
             </p>
             ''',
@@ -366,7 +367,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
         )
         col.markdown(
             f'''
-            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+            <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
                 <b></b>
             </p>
             ''',
@@ -376,7 +377,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             if (((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]!="Turn.")) or ((v == data_game[data_game.columns[i]].min()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                    <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -384,7 +385,7 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             elif ((v == data_game[data_game.columns[i]].min()) or ((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                    <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
@@ -392,9 +393,11 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
             else :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
+                    <p style="font-size:{int(page_width*0.008)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
                         <b>{v}</b>
                     </p>
                     ''',
                     unsafe_allow_html=True)
 
+
+st.write(page_width)
