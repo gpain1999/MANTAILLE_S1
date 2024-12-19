@@ -88,6 +88,8 @@ data_game[colonnes_a_convertir] = data_game[colonnes_a_convertir].astype(int)
 data_game.insert(2,"I_PER",(data_game["PER"]/data_game["Time ON"]**0.5).round(1))
 
 
+
+
 if game_game["LIEU"].to_list()[0] == "DOM" :
     team_local = "MANTAILLE"
     LOCAL_SCORE = game_game["SCORE_MS"].to_list()[0]
@@ -191,207 +193,208 @@ with col_score2 :
         unsafe_allow_html=True
     )
 
-try : 
-    st.title(f"STATS COLLECTIVES")
+if (len(data_game)) == 0 :
+    st.title(f"STATS NON DISPONIBLE POUR LE MOMENT")
+    st.stop()
+    
+st.title(f"STATS COLLECTIVES")
 
-    _,col_PPS,P1,P2,P3,col_reb,col_BC,col_st_as,_ = st.columns([0.045,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.045])
+_,col_PPS,P1,P2,P3,col_reb,col_BC,col_st_as,_ = st.columns([0.045,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.045])
 
-    with col_PPS :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{PPS} PPS</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{round(data_game["PER"].sum(),1)} PER</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-    with col_BC :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["Blocks"].sum()} BLOCKS</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["Turn."].sum()} TURN.</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-    with P1 :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{round(100*data_game["1PTS M"].sum()/data_game["1PTS T"].sum())}% LF</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["1PTS M"].sum()}/{data_game["1PTS T"].sum()}</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-    with P2 :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{round(100*data_game["2PTS M"].sum()/data_game["2PTS T"].sum())}% 2PTS</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["2PTS M"].sum()}/{data_game["2PTS T"].sum()}</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-    with P3 :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{round(100*data_game["3PTS M"].sum()/data_game["3PTS T"].sum())}% 3PTS</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["3PTS M"].sum()}/{data_game["3PTS T"].sum()}</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )
-    with col_reb :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["Reb.Off."].sum()} RO | {data_game["Reb.Def."].sum()} RD </b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        ) 
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["Reb.Tot."].sum()} REB  </b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        ) 
-    with col_st_as :
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["Assists"].sum()} ASSISTS</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        ) 
-        st.markdown(
-            f'''
-            <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-                <b>{data_game["Steals"].sum()} STEALS</b>
-            </p>
-            ''',
-            unsafe_allow_html=True
-        )   
+with col_PPS :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{PPS} PPS</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{round(data_game["PER"].sum(),1)} PER</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+with col_BC :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["Blocks"].sum()} BLOCKS</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["Turn."].sum()} TURN.</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+with P1 :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{round(100*data_game["1PTS M"].sum()/data_game["1PTS T"].sum())}% LF</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["1PTS M"].sum()}/{data_game["1PTS T"].sum()}</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+with P2 :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{round(100*data_game["2PTS M"].sum()/data_game["2PTS T"].sum())}% 2PTS</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["2PTS M"].sum()}/{data_game["2PTS T"].sum()}</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+with P3 :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{round(100*data_game["3PTS M"].sum()/data_game["3PTS T"].sum())}% 3PTS</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["3PTS M"].sum()}/{data_game["3PTS T"].sum()}</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )
+with col_reb :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["Reb.Off."].sum()} RO | {data_game["Reb.Def."].sum()} RD </b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    ) 
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["Reb.Tot."].sum()} REB  </b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    ) 
+with col_st_as :
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["Assists"].sum()} ASSISTS</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    ) 
+    st.markdown(
+        f'''
+        <p style="font-size:{int(25)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
+            <b>{data_game["Steals"].sum()} STEALS</b>
+        </p>
+        ''',
+        unsafe_allow_html=True
+    )   
 
-    st.title(f"STATS INDIVIDUELLES")
+st.title(f"STATS INDIVIDUELLES")
 
-    cols = st.columns([1.5] + [1] * (len(data_game.columns)-1))  # Créer des colonnes dynamiques
+cols = st.columns([1.5] + [1] * (len(data_game.columns)-1))  # Créer des colonnes dynamiques
 
-    for i, col in enumerate(cols):  # Itérer sur chaque colonne
-        if i == 0 :
+for i, col in enumerate(cols):  # Itérer sur chaque colonne
+    if i == 0 :
 
+        col.markdown(
+            f'''
+            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                <b>{data_game.columns[i]}</b>
+            </p>
+            ''',
+            unsafe_allow_html=True
+        )
+        col.markdown(
+            f'''
+            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+                <b></b>
+            </p>
+            ''',
+            unsafe_allow_html=True
+        )
+
+        for v in data_game[data_game.columns[i]]:
             col.markdown(
                 f'''
-                <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
-                    <b>{data_game.columns[i]}</b>
+                <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                    <b>{v}</b>
                 </p>
                 ''',
                 unsafe_allow_html=True
             )
-            col.markdown(
-                f'''
-                <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
-                    <b></b>
-                </p>
-                ''',
-                unsafe_allow_html=True
-            )
 
-            for v in data_game[data_game.columns[i]]:
+    else :
+        col.markdown(
+            f'''
+            <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                <b>{data_game.columns[i]}</b>
+            </p>
+            ''',
+            unsafe_allow_html=True
+        )
+        col.markdown(
+            f'''
+            <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+                <b></b>
+            </p>
+            ''',
+            unsafe_allow_html=True
+        )
+        for v in data_game[data_game.columns[i]]:
+            if (((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]!="Turn.")) or ((v == data_game[data_game.columns[i]].min()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
                 col.markdown(
                     f'''
-                    <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color: #FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
+                    <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
                         <b>{v}</b>
                     </p>
                     ''',
-                    unsafe_allow_html=True
-                )
+                    unsafe_allow_html=True)
+            elif ((v == data_game[data_game.columns[i]].min()) or ((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
+                col.markdown(
+                    f'''
+                    <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
+                        <b>{v}</b>
+                    </p>
+                    ''',
+                    unsafe_allow_html=True)
+            else :
+                col.markdown(
+                    f'''
+                    <p style="font-size:{int(15)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
+                        <b>{v}</b>
+                    </p>
+                    ''',
+                    unsafe_allow_html=True)
 
-        else :
-            col.markdown(
-                f'''
-                <p style="font-size:{int(15)}px; text-align: center; background-color: #B91A1E;color:#FFFFFF; padding: 2px; border-radius: 5px;outline: 3px solid #FFFFFF;">
-                    <b>{data_game.columns[i]}</b>
-                </p>
-                ''',
-                unsafe_allow_html=True
-            )
-            col.markdown(
-                f'''
-                <p style="font-size:{int(27)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
-                    <b></b>
-                </p>
-                ''',
-                unsafe_allow_html=True
-            )
-            for v in data_game[data_game.columns[i]]:
-                if (((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]!="Turn.")) or ((v == data_game[data_game.columns[i]].min()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
-                    col.markdown(
-                        f'''
-                        <p style="font-size:{int(15)}px; text-align: center; background-color: gold;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                            <b>{v}</b>
-                        </p>
-                        ''',
-                        unsafe_allow_html=True)
-                elif ((v == data_game[data_game.columns[i]].min()) or ((v == data_game[data_game.columns[i]].max()) and (data_game.columns[i]=="Turn."))) and (data_game[data_game.columns[i]].max() != data_game[data_game.columns[i]].min()) :
-                    col.markdown(
-                        f'''
-                        <p style="font-size:{int(15)}px; text-align: center; background-color: #00FFFF;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                            <b>{v}</b>
-                        </p>
-                        ''',
-                        unsafe_allow_html=True)
-                else :
-                    col.markdown(
-                        f'''
-                        <p style="font-size:{int(15)}px; text-align: center; background-color: #FFFFFF;color: #B91A1E; padding: 2px; border-radius: 5px;outline: 3px solid #B91A1E;">
-                            <b>{v}</b>
-                        </p>
-                        ''',
-                        unsafe_allow_html=True)
-
-except :
-    st.title(f"STATS NON DISPONIBLES")
