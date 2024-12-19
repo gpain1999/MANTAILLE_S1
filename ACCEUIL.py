@@ -73,3 +73,14 @@ with col3 :
         pass
 
 require_authentication()
+
+st.title(f"BIENVENUE")
+
+st.markdown(
+    f'''
+    <p style="font-size:{int(60)}px; text-align: left; padding: 10pxs;">
+        <b>Tu trouveras sur la barre de gauche tous les onglets disponibles.</b>
+    </p>
+    ''',
+    unsafe_allow_html=True
+)
