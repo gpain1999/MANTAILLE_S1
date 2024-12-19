@@ -7,7 +7,6 @@ from PIL import Image
 import math
 import matplotlib.pyplot as plt
 
-import streamlit as st
 from auth import require_authentication
 
 require_authentication()
