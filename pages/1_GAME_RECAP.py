@@ -194,9 +194,9 @@ with col_score2 :
     )
 
 if (len(data_game)) == 0 :
-    st.title(f"STATS NON DISPONIBLE POUR LE MOMENT")
+    st.title(f"STATS DU MATCH NON DISPONIBLE POUR LE MOMENT.")
     st.stop()
-    
+
 st.title(f"STATS COLLECTIVES")
 
 _,col_PPS,P1,P2,P3,col_reb,col_BC,col_st_as,_ = st.columns([0.045,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.045])
