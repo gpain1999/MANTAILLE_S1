@@ -797,16 +797,16 @@ data_indiv2 = data_indiv2[['Date', 'Adversaire', 'WIN',
                            'Assists', 'Blocks']]
 
 data_indiv2['I_PER'] = (data_indiv2['I_PER']).round(1)
-
 data_indiv3 = data_indiv2.copy()
+
 
 data_indiv3["PTS PER SHOOT"] = (data_indiv3["2PTS M"]*2 + data_indiv3["3PTS M"]*3) / (data_indiv3["2PTS T"] + data_indiv3["3PTS T"])
 data_indiv3["PTS PER 2PTS"] = (data_indiv3["2PTS M"]*2) / (data_indiv3["2PTS T"])
 data_indiv3["PTS PER 3PTS"] = (data_indiv3["3PTS M"]*3) / (data_indiv3["3PTS T"])
 data_indiv3["PTS PER FT"] = (data_indiv3["1PTS M"]) / (data_indiv3["1PTS T"])
-
 data_indiv3["NB SHOOTS"] =(data_indiv3["2PTS T"] + data_indiv3["3PTS T"])
 data_indiv3["NB FT"] =(data_indiv3["1PTS T"])
+
 
 
 stats_columns = ['Time ON', 'PER', 'I_PER', 'PTS', 'PTS PER SHOOT', 'PTS PER 2PTS', 
@@ -816,23 +816,52 @@ stats_columns = ['Time ON', 'PER', 'I_PER', 'PTS', 'PTS PER SHOOT', 'PTS PER 2PT
 data_indiv3 = data_indiv3.fillna(0)
 summary = []
 for col in stats_columns:
-    # Vérification des données pour 'YES'
-    if not data_indiv3[data_indiv3['WIN'] == 'YES'][col].empty:
-        avg_yes = data_indiv3[data_indiv3['WIN'] == 'YES'][col].mean().round(3)
-    else:
-        avg_yes = 0
 
-    # Vérification des données pour 'NO'
-    if not data_indiv3[data_indiv3['WIN'] == 'NO'][col].empty:
+    if col in ['PTS PER SHOOT','PTS PER 2PTS', 'PTS PER 3PTS','PTS PER FT'] :
+        if not data_indiv3[data_indiv3['WIN'] == 'YES'][col].empty:
+            df_ = data_indiv3[data_indiv3['WIN'] == 'YES']
+            dc = {}
+            dc["PTS PER SHOOT"] = (df_["2PTS M"].sum()*2 + df_["3PTS M"].sum()*3) / (df_["2PTS T"].sum() + df_["3PTS T"].sum())
+            dc["PTS PER 2PTS"] = (df_["2PTS M"].sum()*2) / (df_["2PTS T"].sum())
+            dc["PTS PER 3PTS"] = (df_["3PTS M"].sum()*3) / (df_["3PTS T"].sum())
+            dc["PTS PER FT"] = (df_["1PTS M"].sum()) / (df_["1PTS T"].sum())
 
-        avg_no = data_indiv3[data_indiv3['WIN'] == 'NO'][col].mean().round(3)
-    else:
-        avg_no = 0
+            avg_yes = round(dc[col],2)
+
+        else:
+            avg_yes = 0
+        # Vérification des données pour 'NO'
+        if not data_indiv3[data_indiv3['WIN'] == 'NO'][col].empty:
+            df_ = data_indiv3[data_indiv3['WIN'] == 'NO']
+            dc = {}
+            dc["PTS PER SHOOT"] = (df_["2PTS M"].sum()*2 + df_["3PTS M"].sum()*3) / (df_["2PTS T"].sum() + df_["3PTS T"].sum())
+            dc["PTS PER 2PTS"] = (df_["2PTS M"].sum()*2) / (df_["2PTS T"].sum())
+            dc["PTS PER 3PTS"] = (df_["3PTS M"].sum()*3) / (df_["3PTS T"].sum())
+            dc["PTS PER FT"] = (df_["1PTS M"].sum()) / (df_["1PTS T"].sum())
+
+            avg_no = round(dc[col],2)
+        else:
+            avg_no = 0
+
+
+    else :
+
+        if not data_indiv3[data_indiv3['WIN'] == 'YES'][col].empty:
+            avg_yes = data_indiv3[data_indiv3['WIN'] == 'YES'][col].mean().round(2)
+        else:
+            avg_yes = 0
+
+        # Vérification des données pour 'NO'
+        if not data_indiv3[data_indiv3['WIN'] == 'NO'][col].empty:
+
+            avg_no = data_indiv3[data_indiv3['WIN'] == 'NO'][col].mean().round(3)
+        else:
+            avg_no = 0
 
     # Calcul des différences et pourcentage
     delta = avg_yes - avg_no
     delta_pct = int(((delta / avg_no * 100)).round(0)) if avg_no != 0 else 0
-    
+
     summary.append([col, avg_yes, avg_no, delta, delta_pct])
 
 # Ajouter une ligne pour le comptage des parties
