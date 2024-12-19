@@ -22,14 +22,6 @@ images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to 
 
 
 st.set_page_config(page_title="GAME RECAP", layout="wide")
-# CSS pour masquer le footer et potentiellement d'autres éléments
-hide_streamlit_style = """
-    <style>
-    #MainMenu {visibility: hidden;}  /* Cache le menu principal */
-    footer {visibility: hidden;}    /* Cache le footer */
-    </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 from streamlit_js_eval import streamlit_js_eval
 page_width = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,)
