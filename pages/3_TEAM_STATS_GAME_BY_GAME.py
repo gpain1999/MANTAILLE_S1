@@ -7,7 +7,12 @@ from PIL import Image
 import math
 import matplotlib.pyplot as plt
 
+# Ajouter le chemin de la racine du projet pour les imports
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from auth import require_authentication
+
+require_authentication()
 data_dir = os.path.join(os.path.dirname(__file__), '../data')
 # sys.path.append(os.path.join(os.path.dirname(__file__), './fonctions/fonctions'))
 images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to the images directory
