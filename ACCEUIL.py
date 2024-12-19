@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 
 from auth import require_authentication
 
-require_authentication()
 data_dir = os.path.join(os.path.dirname(__file__), '../data')
 # sys.path.append(os.path.join(os.path.dirname(__file__), './fonctions/fonctions'))
 images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to the images directory
@@ -72,3 +71,5 @@ with col3 :
         st.image(image)
     except FileNotFoundError:
         pass
+
+require_authentication()
