@@ -7,7 +7,12 @@ from PIL import Image
 import math
 import matplotlib.pyplot as plt
 from datetime import datetime
+# Ajouter le chemin de la racine du projet pour les imports
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from auth import require_authentication
+
+require_authentication()
 def plot_semi_circular_chart(value, t, size=300, font_size=20,m=True):
     """
     Create a semi-circular chart that is perfectly square without unnecessary white space.
