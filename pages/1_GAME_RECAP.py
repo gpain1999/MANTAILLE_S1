@@ -239,7 +239,7 @@ with P1 :
     st.markdown(
         f'''
         <p style="font-size:{int(page_width*0.013)}px; text-align: center; background-color: {local_c1};color: {local_c2}; padding: 4px; border-radius: 5px;outline: 3px solid {local_c2};">
-            <b>{round(100*data_game["1PTS M"].sum()/data_game["1PTS T"].sum())}% LF</b>
+            <b>{round(100*data_game["1PTS M"].sum()/data_game["1PTS T"].sum())}% FT</b>
         </p>
         ''',
         unsafe_allow_html=True
