@@ -69,7 +69,7 @@ PPS = ((data_game["2PTS M"].sum() * 2 + data_game["3PTS M"].sum() *3) / (data_ga
 data_game = data_game.drop(columns = ["1PTS R","2PTS R", "3PTS R"])
 
 data_game = data_game[["Nom","Time ON","PER","PTS",
-                       "1PTS M", "1PTS T","PPS", "2PTS M", "2PTS T", "3PTS M", "3PTS T","PPS",
+                       "1PTS M", "1PTS T", "2PTS M", "2PTS T", "3PTS M", "3PTS T","PPS",
                        "Reb.Off.", "Reb.Def.", "Reb.Tot.",
                        "Steals", "Turn.", "Assists", "Blocks"]]
 data_game = data_game.fillna(0)  # Remplacer les NaN par 0
