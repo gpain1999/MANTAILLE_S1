@@ -258,7 +258,7 @@ with NAME :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["Nom"] :
+    for v in result_global.head(12)["Nom"] :
 
         st.markdown(
             f'''
@@ -278,7 +278,7 @@ with STATS :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["STATS"] :
+    for v in result_global.head(12)["STATS"] :
 
         st.markdown(
             f'''
@@ -298,7 +298,7 @@ with Mean_Tot :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["MOYENNE_GLOBAL"] :
+    for v in result_global.head(12)["MOYENNE_GLOBAL"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -317,7 +317,7 @@ with Mean_WIN :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["MOYENNE_WIN"] :
+    for v in result_global.head(12)["MOYENNE_WIN"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -337,7 +337,7 @@ with Mean_LOSE :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["MOYENNE_LOSS"] :
+    for v in result_global.head(12)["MOYENNE_LOSS"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -356,7 +356,7 @@ with Delta :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["DELTA"] :
+    for v in result_global.head(12)["DELTA"] :
         if v > 0 :
             vf = f"+{v}"
             coloration = "green"
@@ -385,7 +385,7 @@ with Delta_p :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.head(10)["DELTA %"] :
+    for v in result_global.head(12)["DELTA %"] :
         if v > 0 :
             vf = f"+{v} % " 
             coloration = "green"
@@ -414,7 +414,7 @@ with NAME2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["Nom"] :
+    for v in result_global.iloc[12:24]["Nom"] :
 
         st.markdown(
             f'''
@@ -434,7 +434,7 @@ with STATS2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["STATS"] :
+    for v in result_global.iloc[12:24]["STATS"] :
 
         st.markdown(
             f'''
@@ -454,7 +454,7 @@ with Mean_Tot2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["MOYENNE_GLOBAL"] :
+    for v in result_global.iloc[12:24]["MOYENNE_GLOBAL"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -473,7 +473,7 @@ with Mean_WIN2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["MOYENNE_WIN"] :
+    for v in result_global.iloc[12:24]["MOYENNE_WIN"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -493,7 +493,7 @@ with Mean_LOSE2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["MOYENNE_LOSS"] :
+    for v in result_global.iloc[12:24]["MOYENNE_LOSS"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -512,7 +512,7 @@ with Delta2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["DELTA"] :
+    for v in result_global.iloc[12:24]["DELTA"] :
         if v > 0 :
             vf = f"+{v}"
             coloration = "green"
@@ -541,7 +541,7 @@ with Delta_p2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_global.iloc[10:20]["DELTA %"] :
+    for v in result_global.iloc[12:24]["DELTA %"] :
         if v > 0 :
             vf = f"+{v} % " 
             coloration = "green"
@@ -583,7 +583,7 @@ with NAME :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["Nom"] :
+    for v in result_adresse.head(12)["Nom"] :
 
         st.markdown(
             f'''
@@ -603,7 +603,7 @@ with STATS :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["STATS"] :
+    for v in result_adresse.head(12)["STATS"] :
 
         st.markdown(
             f'''
@@ -623,7 +623,7 @@ with Mean_Tot :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["MOYENNE_GLOBAL"] :
+    for v in result_adresse.head(12)["MOYENNE_GLOBAL"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -642,7 +642,7 @@ with Mean_WIN :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["MOYENNE_WIN"] :
+    for v in result_adresse.head(12)["MOYENNE_WIN"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -662,7 +662,7 @@ with Mean_LOSE :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["MOYENNE_LOSS"] :
+    for v in result_adresse.head(12)["MOYENNE_LOSS"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -681,7 +681,7 @@ with Delta :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["DELTA"] :
+    for v in result_adresse.head(12)["DELTA"] :
         if v > 0 :
             vf = f"+{v}"
             coloration = "green"
@@ -710,7 +710,7 @@ with Delta_p :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.head(10)["DELTA %"] :
+    for v in result_adresse.head(12)["DELTA %"] :
         if v > 0 :
             vf = f"+{v} % " 
             coloration = "green"
@@ -739,7 +739,7 @@ with NAME2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["Nom"] :
+    for v in result_adresse.iloc[12:24]["Nom"] :
 
         st.markdown(
             f'''
@@ -759,7 +759,7 @@ with STATS2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["STATS"] :
+    for v in result_adresse.iloc[12:24]["STATS"] :
 
         st.markdown(
             f'''
@@ -779,7 +779,7 @@ with Mean_Tot2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["MOYENNE_GLOBAL"] :
+    for v in result_adresse.iloc[12:24]["MOYENNE_GLOBAL"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -798,7 +798,7 @@ with Mean_WIN2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["MOYENNE_WIN"] :
+    for v in result_adresse.iloc[12:24]["MOYENNE_WIN"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -818,7 +818,7 @@ with Mean_LOSE2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["MOYENNE_LOSS"] :
+    for v in result_adresse.iloc[12:24]["MOYENNE_LOSS"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -837,7 +837,7 @@ with Delta2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["DELTA"] :
+    for v in result_adresse.iloc[12:24]["DELTA"] :
         if v > 0 :
             vf = f"+{v}"
             coloration = "green"
@@ -866,7 +866,7 @@ with Delta_p2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_adresse.iloc[10:20]["DELTA %"] :
+    for v in result_adresse.iloc[12:24]["DELTA %"] :
         if v > 0 :
             vf = f"+{v} % " 
             coloration = "green"
@@ -908,7 +908,7 @@ with NAME :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["Nom"] :
+    for v in result_nb_shoot.head(12)["Nom"] :
 
         st.markdown(
             f'''
@@ -928,7 +928,7 @@ with STATS :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["STATS"] :
+    for v in result_nb_shoot.head(12)["STATS"] :
 
         st.markdown(
             f'''
@@ -948,7 +948,7 @@ with Mean_Tot :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["MOYENNE_GLOBAL"] :
+    for v in result_nb_shoot.head(12)["MOYENNE_GLOBAL"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -967,7 +967,7 @@ with Mean_WIN :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["MOYENNE_WIN"] :
+    for v in result_nb_shoot.head(12)["MOYENNE_WIN"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -987,7 +987,7 @@ with Mean_LOSE :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["MOYENNE_LOSS"] :
+    for v in result_nb_shoot.head(12)["MOYENNE_LOSS"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -1006,7 +1006,7 @@ with Delta :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["DELTA"] :
+    for v in result_nb_shoot.head(12)["DELTA"] :
         if v > 0 :
             vf = f"+{v}"
             coloration = "green"
@@ -1035,7 +1035,7 @@ with Delta_p :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.head(10)["DELTA %"] :
+    for v in result_nb_shoot.head(12)["DELTA %"] :
         if v > 0 :
             vf = f"+{v} % " 
             coloration = "green"
@@ -1064,7 +1064,7 @@ with NAME2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["Nom"] :
+    for v in result_nb_shoot.iloc[12:24]["Nom"] :
 
         st.markdown(
             f'''
@@ -1084,7 +1084,7 @@ with STATS2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["STATS"] :
+    for v in result_nb_shoot.iloc[12:24]["STATS"] :
 
         st.markdown(
             f'''
@@ -1104,7 +1104,7 @@ with Mean_Tot2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["MOYENNE_GLOBAL"] :
+    for v in result_nb_shoot.iloc[12:24]["MOYENNE_GLOBAL"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: white ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -1123,7 +1123,7 @@ with Mean_WIN2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["MOYENNE_WIN"] :
+    for v in result_nb_shoot.iloc[12:24]["MOYENNE_WIN"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -1143,7 +1143,7 @@ with Mean_LOSE2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["MOYENNE_LOSS"] :
+    for v in result_nb_shoot.iloc[12:24]["MOYENNE_LOSS"] :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
@@ -1162,7 +1162,7 @@ with Delta2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["DELTA"] :
+    for v in result_nb_shoot.iloc[12:24]["DELTA"] :
         if v > 0 :
             vf = f"+{v}"
             coloration = "green"
@@ -1191,7 +1191,7 @@ with Delta_p2 :
         ''',
         unsafe_allow_html=True
     )
-    for v in result_nb_shoot.iloc[10:20]["DELTA %"] :
+    for v in result_nb_shoot.iloc[12:24]["DELTA %"] :
         if v > 0 :
             vf = f"+{v} % " 
             coloration = "green"
