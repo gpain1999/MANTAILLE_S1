@@ -321,6 +321,10 @@ with col_st_as :
         unsafe_allow_html=True
     )   
 
+
+data_game.rename(columns={'1PTS M': 'FT M','1PTS T': 'FT T'}, inplace=True)
+
+
 st.title(f"STATS INDIVIDUELLES")
 
 cols = st.columns([1.5] + [1] * (len(data_game.columns)-1))  # Créer des colonnes dynamiques
