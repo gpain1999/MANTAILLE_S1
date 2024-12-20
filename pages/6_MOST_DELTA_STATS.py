@@ -115,14 +115,21 @@ result.rename(columns={
 result = result[[ "Nom" ,  "STATS" , "MOYENNE_GLOBAL" ,   "MOYENNE_WIN","MOYENNE_LOSS"]]
 for p in top8 :
     pstats = (result[(result["Nom"]==p)&(result["STATS"].isin(['1PTS M', '1PTS T', '2PTS M', 'NB 2P SH.', '3PTS M', 'NB 3P SH.']))])
-
+    print(pstats)
+    print(p)
+    print(pstats[pstats["STATS"]=="2PTS M"]["MOYENNE_WIN"].to_list()[0]*2)
+    print(pstats[pstats["STATS"]=="3PTS M"]["MOYENNE_WIN"].to_list()[0]*3)
+    print(pstats[pstats["STATS"]=="NB 2P SH."]["MOYENNE_WIN"].to_list()[0])
+    print(pstats[pstats["STATS"]=="NB 3P SH."]["MOYENNE_WIN"].to_list()[0])
     #ligne 
     result.loc[len(result)] = [p,
                                "PPS",
                                (pstats[pstats["STATS"]=="2PTS M"]["MOYENNE_GLOBAL"].to_list()[0]*2 + pstats[pstats["STATS"]=="3PTS M"]["MOYENNE_GLOBAL"].to_list()[0]*3)/(pstats[pstats["STATS"]=="NB 2P SH."]["MOYENNE_GLOBAL"].to_list()[0] + pstats[pstats["STATS"]=="NB 3P SH."]["MOYENNE_GLOBAL"].to_list()[0]),
-                               (pstats[pstats["STATS"]=="2PTS M"]["MOYENNE_WIN"].to_list()[0]*2 + pstats[pstats["STATS"]=="3PTS M"]["MOYENNE_WIN"].to_list()[0]*3)/(pstats[pstats["STATS"]=="NB 2P SH."]["MOYENNE_WIN"].to_list()[0] + pstats[pstats["STATS"]=="NB 3P SH."]["MOYENNE_GLOBAL"].to_list()[0]),
+                               (pstats[pstats["STATS"]=="2PTS M"]["MOYENNE_WIN"].to_list()[0]*2 + pstats[pstats["STATS"]=="3PTS M"]["MOYENNE_WIN"].to_list()[0]*3)/(pstats[pstats["STATS"]=="NB 2P SH."]["MOYENNE_WIN"].to_list()[0] + pstats[pstats["STATS"]=="NB 3P SH."]["MOYENNE_WIN"].to_list()[0]),
                                (pstats[pstats["STATS"]=="2PTS M"]["MOYENNE_LOSS"].to_list()[0]*2 + pstats[pstats["STATS"]=="3PTS M"]["MOYENNE_LOSS"].to_list()[0]*3)/(pstats[pstats["STATS"]=="NB 2P SH."]["MOYENNE_LOSS"].to_list()[0] + pstats[pstats["STATS"]=="NB 3P SH."]["MOYENNE_LOSS"].to_list()[0])
                                ]
+
+    
     result.loc[len(result)] = [p,
                                "PP2S",
                                (pstats[pstats["STATS"]=="2PTS M"]["MOYENNE_GLOBAL"].to_list()[0]*2)/(pstats[pstats["STATS"]=="NB 2P SH."]["MOYENNE_GLOBAL"].to_list()[0]),
