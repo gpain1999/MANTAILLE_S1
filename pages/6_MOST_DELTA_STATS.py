@@ -136,7 +136,7 @@ for p in top8 :
                                (pstats[pstats["STATS"]=="3PTS M"]["MOYENNE_LOSS"].to_list()[0]*3)/(pstats[pstats["STATS"]=="NB 3P SH."]["MOYENNE_LOSS"].to_list()[0]),
                                ]
     result.loc[len(result)] = [p,
-                               "PTS PER FT",
+                               "PP FT",
                                (pstats[pstats["STATS"]=="1PTS M"]["MOYENNE_GLOBAL"].to_list()[0])/(pstats[pstats["STATS"]=="1PTS T"]["MOYENNE_GLOBAL"].to_list()[0]),
                                (pstats[pstats["STATS"]=="1PTS M"]["MOYENNE_WIN"].to_list()[0])/(pstats[pstats["STATS"]=="1PTS T"]["MOYENNE_WIN"].to_list()[0]),
                                (pstats[pstats["STATS"]=="1PTS M"]["MOYENNE_LOSS"].to_list()[0])/(pstats[pstats["STATS"]=="1PTS T"]["MOYENNE_LOSS"].to_list()[0]),
@@ -168,7 +168,7 @@ result = result.reindex(result["DELTA %"].abs().sort_values(ascending=False).ind
 result = result[(result["MOYENNE_WIN"]!=0)&(result["MOYENNE_LOSS"]!=0)]
 result_global = result[result["STATS"].isin(['Reb.Off.','PER','Assists' , 'Reb.Def.','Steals' ,'Reb.Tot.' ,'Time ON' ,'Turn.' , 'Blocks'])]
 
-result_adresse = result[result["STATS"].isin(['PP3S','PPS','PP2S','PTS PER FT'])]
+result_adresse = result[result["STATS"].isin(['PP3S','PPS','PP2S','PP FT'])]
 result_nb_shoot = result[result["STATS"].isin(['NB FT','NB 2P SH.','NB 3P SH.','NB SHOOT'])]
 
 ms_path = f"images/LOGO.png"  # Chemin vers l'image
