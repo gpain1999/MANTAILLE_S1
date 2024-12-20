@@ -827,13 +827,13 @@ summary = []
 for col in stats_columns:
 
     if col in ['PTS PER SHOOT','PTS PER 2PTS', 'PTS PER 3PTS','PTS PER FT'] :
-        if not data_indiv3[data_indiv3['WIN'] == 'YES'][col].empty:
+        if  len(data_indiv3[data_indiv3['WIN'] == 'YES'])>0:
             df_ = data_indiv3[data_indiv3['WIN'] == 'YES']
             dc = {}
-            dc["PTS PER SHOOT"] = (df_["2PTS M"].sum()*2 + df_["3PTS M"].sum()*3) / (df_["2PTS T"].sum() + df_["3PTS T"].sum())
-            dc["PTS PER 2PTS"] = (df_["2PTS M"].sum()*2) / (df_["2PTS T"].sum())
-            dc["PTS PER 3PTS"] = (df_["3PTS M"].sum()*3) / (df_["3PTS T"].sum())
-            dc["PTS PER FT"] = (df_["1PTS M"].sum()) / (df_["1PTS T"].sum())
+            dc["PTS PER SHOOT"] = (df_["2PTS M"].sum()*2 + df_["3PTS M"].sum()*3) / (df_["2PTS T"].sum() + df_["3PTS T"].sum()) if (df_["2PTS T"].sum() + df_["3PTS T"].sum()) != 0 else 0
+            dc["PTS PER 2PTS"] = (df_["2PTS M"].sum()*2) / (df_["2PTS T"].sum()) if df_["2PTS T"].sum() != 0 else 0
+            dc["PTS PER 3PTS"] = (df_["3PTS M"].sum()*3) / (df_["3PTS T"].sum()) if df_["3PTS T"].sum() != 0 else 0
+            dc["PTS PER FT"] = (df_["1PTS M"].sum()) / (df_["1PTS T"].sum()) if df_["1PTS T"].sum() != 0 else 0
 
             avg_yes = round(dc[col],2)
 
@@ -843,10 +843,10 @@ for col in stats_columns:
         if not data_indiv3[data_indiv3['WIN'] == 'NO'][col].empty:
             df_ = data_indiv3[data_indiv3['WIN'] == 'NO']
             dc = {}
-            dc["PTS PER SHOOT"] = (df_["2PTS M"].sum()*2 + df_["3PTS M"].sum()*3) / (df_["2PTS T"].sum() + df_["3PTS T"].sum())
-            dc["PTS PER 2PTS"] = (df_["2PTS M"].sum()*2) / (df_["2PTS T"].sum())
-            dc["PTS PER 3PTS"] = (df_["3PTS M"].sum()*3) / (df_["3PTS T"].sum())
-            dc["PTS PER FT"] = (df_["1PTS M"].sum()) / (df_["1PTS T"].sum())
+            dc["PTS PER SHOOT"] = (df_["2PTS M"].sum()*2 + df_["3PTS M"].sum()*3) / (df_["2PTS T"].sum() + df_["3PTS T"].sum()) if (df_["2PTS T"].sum() + df_["3PTS T"].sum()) != 0 else 0
+            dc["PTS PER 2PTS"] = (df_["2PTS M"].sum()*2) / (df_["2PTS T"].sum()) if df_["2PTS T"].sum() != 0 else 0
+            dc["PTS PER 3PTS"] = (df_["3PTS M"].sum()*3) / (df_["3PTS T"].sum()) if df_["3PTS T"].sum() != 0 else 0
+            dc["PTS PER FT"] = (df_["1PTS M"].sum()) / (df_["1PTS T"].sum()) if df_["1PTS T"].sum() != 0 else 0
 
             avg_no = round(dc[col],2)
         else:
@@ -869,6 +869,7 @@ for col in stats_columns:
 
     # Calcul des différences et pourcentage
     delta = avg_yes - avg_no
+
     delta_pct = int(((delta / avg_no * 100)).round(0)) if avg_no != 0 else 0
 
     summary.append([col, avg_yes, avg_no, delta, delta_pct])
