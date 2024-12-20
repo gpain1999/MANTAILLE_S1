@@ -854,7 +854,7 @@ for col in stats_columns:
         # Vérification des données pour 'NO'
         if not data_indiv3[data_indiv3['WIN'] == 'NO'][col].empty:
 
-            avg_no = data_indiv3[data_indiv3['WIN'] == 'NO'][col].mean().round(3)
+            avg_no = data_indiv3[data_indiv3['WIN'] == 'NO'][col].mean().round(2)
         else:
             avg_no = 0
 
