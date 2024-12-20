@@ -119,6 +119,15 @@ st.sidebar.header("SETTINGS")
 P = st.sidebar.selectbox("SELECTED PLAYER", options=sorted(data["Nom"].unique().tolist()), index=0)
 PER_TYPE = st.sidebar.selectbox("SELECTED PER CALCUL", options=["GUITE PER","CLASSIC PER"], index=0)
 selected_stats = st.sidebar.selectbox("Stat Selected", options=["PER","I_PER","PTS","Reb.Tot.","Assists","Steals"])
+selected_range = st.sidebar.slider(
+    "Select a ROUND range:",
+    min_value=1,
+    max_value=data["ROUND"].max(),
+    value=(1, data["ROUND"].max()),
+    step=1
+)
+
+data = data[(data["ROUND"]>= selected_range[0])&(data["ROUND"]<= selected_range[1])]
 
 
 
