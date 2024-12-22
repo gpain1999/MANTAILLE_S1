@@ -403,4 +403,16 @@ for i, col in enumerate(cols):  # Itérer sur chaque colonne
                     unsafe_allow_html=True)
 
 
-st.write(page_width)
+# st.title(f"SEASONS BESTS/WORST PERFORMANCE DURING WITH GAME : TEAM")
+
+# st.markdown(
+#     f'''
+#     <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: grey;color: black; padding: 3px; border-radius: 5px;">
+#         <b></b>
+#     </p>
+#     ''',
+#     unsafe_allow_html=True
+# )  
+
+# st.title(f"SEASONS BESTS/WORST PERFORMANCE DURING WITH GAME : PLAYERS")
+

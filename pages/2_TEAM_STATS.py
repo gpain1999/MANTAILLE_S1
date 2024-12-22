@@ -96,8 +96,6 @@ aggregated_df = data.groupby(["WIN","Date"]).apply(lambda group: custom_aggregat
 aggregated_df_tot = data.groupby(["TOTAL","Date"]).apply(lambda group: custom_aggregation(group, "CUMULATED"))
 
 
-print(aggregated_df)
-print(aggregated_df_tot)
 
 aggregated_df = aggregated_df.reset_index()
 aggregated_df_tot = aggregated_df_tot.reset_index()
