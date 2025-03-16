@@ -21,8 +21,12 @@ images_dir = os.path.join(os.path.dirname(__file__), '..', 'images')  # Path to 
 
 ############################DATA ###########################
 
-data = pd.read_csv(os.path.join(data_dir, f'all_boxescores.csv'))
+data = pd.read_csv(os.path.join(data_dir, f'all_boxescores.csv'),sep=";")
+data["Date"] = pd.to_datetime(data["Date"], format="%d/%m/%Y").dt.strftime("%Y-%m-%d")
+
 game = pd.read_csv(os.path.join(data_dir, f'SCORE_GAME.csv'),sep=";")
+game["ROUND"] = game["ROUND"].astype(int)
+
 per = pd.read_csv(os.path.join(data_dir, f'PER.csv'),sep=";")
 
 data = pd.merge(
