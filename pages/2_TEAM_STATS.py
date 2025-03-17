@@ -275,7 +275,7 @@ with Mean_tot :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #C0C0C0 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {v} </b>
+                <b> {v:.2f} </b>
             </p>
             ''',
             unsafe_allow_html=True
@@ -295,7 +295,7 @@ with Mean_WIN :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {v} </b>
+                <b> {v:.2f} </b>
             </p>
             ''',
             unsafe_allow_html=True
@@ -314,7 +314,7 @@ with Mean_LOSE :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {v} </b>
+                <b> {v:.2f} </b>
             </p>
             ''',
             unsafe_allow_html=True
@@ -342,13 +342,13 @@ with Delta :
                 coloration = "white"
         else :
             if v > 0 :
-                vf = f"+{round(v,1)}"
+                vf = f"+{round(v,2)}"
                 coloration = "red"
             elif v<0 :
-                vf = round(v,1)
+                vf = round(v,2)
                 coloration = "green"
             else :
-                vf = round(v,1)
+                vf = round(v,2)
                 coloration = "white"            
 
         st.markdown(
@@ -393,7 +393,7 @@ with Mean_tot2 :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #C0C0C0 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {v} </b>
+                <b> {v:.2f} </b>
             </p>
             ''',
             unsafe_allow_html=True
@@ -413,7 +413,7 @@ with Mean_WIN2 :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #E8FFD9 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {v} </b>
+                <b> {v:.2f} </b>
             </p>
             ''',
             unsafe_allow_html=True
@@ -432,7 +432,7 @@ with Mean_LOSE2 :
         st.markdown(
             f'''
             <p style="font-size:{int(page_width*0.01)}px; text-align: center; background-color: #FFD3D3 ;color: black; padding: 2px; border-radius: 5px;outline: 3px solid black;">
-                <b> {v} </b>
+                <b> {v:.2f} </b>
             </p>
             ''',
             unsafe_allow_html=True
@@ -449,13 +449,13 @@ with Delta2 :
     )
     for v in result_df2['Delta'] :
         if v > 0 :
-            vf = f"+{round(v,1)}"
+            vf = f"+{round(v,2)}"
             coloration = "green"
         elif v<0 :
-            vf = round(v,1)
+            vf = round(v,2)
             coloration = "red"
         else :
-            vf = round(v,1)
+            vf = round(v,2)
             coloration = "white"
 
         st.markdown(

@@ -30,6 +30,7 @@ page_width = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH', 
 ############################DATA ###########################
 
 data = pd.read_csv(os.path.join(data_dir, f'all_boxescores.csv'),sep=";")
+print(data)
 data["Date"] = pd.to_datetime(data["Date"], format="%d/%m/%Y").dt.strftime("%Y-%m-%d")
 
 game = pd.read_csv(os.path.join(data_dir, f'SCORE_GAME.csv'),sep=";")
